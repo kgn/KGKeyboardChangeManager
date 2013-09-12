@@ -140,19 +140,19 @@
     }
 
     // Call the appropriate callback
-    if(self.orientationChange){
-        [self.orientationCallbacks enumerateKeysAndObjectsUsingBlock:^(id key, KGKeyboardChangeManagerKeyboardOrientationBlock block, BOOL *stop){
-            if(block){
-                block(newKeyboardEndFrame);
-            }
-        }];
-    }else{
+//    if(self.orientationChange){
+//        [self.orientationCallbacks enumerateKeysAndObjectsUsingBlock:^(id key, KGKeyboardChangeManagerKeyboardOrientationBlock block, BOOL *stop){
+//            if(block){
+//                block(newKeyboardEndFrame);
+//            }
+//        }];
+//    }else{
         [self.changeCallbacks enumerateKeysAndObjectsUsingBlock:^(id key, KGKeyboardChangeManagerKeyboardChangedBlock block, BOOL *stop){
             if(block){
                 block(show, newKeyboardEndFrame, animationDuration, animationCurve);
             }
         }];
-    }
+//    }
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification{
