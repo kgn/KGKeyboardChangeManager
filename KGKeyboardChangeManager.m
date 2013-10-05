@@ -175,13 +175,11 @@
 #pragma mark - Animation helper methods
 
 + (void)animateWithWithDuration:(NSTimeInterval)animationDuration animationCurve:(UIViewAnimationCurve)animationCurve andAnimation:(void(^)())animationBlock{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:animationDuration];
-    [UIView setAnimationCurve:animationCurve];
-    if(animationBlock){
-        animationBlock();
-    }
-    [UIView commitAnimations];
+    [self animateWithWithDuration:animationDuration animationCurve:animationCurve animation:^{
+        if(animationBlock){
+            animationBlock();
+        }
+    } andCompletion:nil];
 }
 
 + (void)animateWithWithDuration:(NSTimeInterval)animationDuration animationCurve:(UIViewAnimationCurve)animationCurve animation:(void(^)())animationBlock andCompletion:(void(^)(BOOL finished))completionBlock{
