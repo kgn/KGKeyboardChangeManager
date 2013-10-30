@@ -183,9 +183,7 @@
 }
 
 + (void)animateWithWithDuration:(NSTimeInterval)animationDuration animationCurve:(UIViewAnimationCurve)animationCurve animation:(void(^)())animationBlock andCompletion:(void(^)(BOOL finished))completionBlock{
-    [UIView animateWithDuration:animationDuration delay:0
-                        options:animationCurve|UIViewAnimationOptionBeginFromCurrentState
-                     animations:animationBlock completion:completionBlock];
+    [UIView animateWithDuration:animationDuration delay:0 options:(animationCurve << 16) animations:animationBlock completion:completionBlock];
 }
 
 @end
